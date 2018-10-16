@@ -112,6 +112,9 @@ function listenToUser(canvas) {
   if(document.body.ontouchstart !== undefined) {
     // 触屏设别
     canvas.ontouchstart = (e) => {
+      // 防止默认滚动
+      e.preventDefault()
+
       // 绘画模式激活
       usingOrNot = true
       var clientX = e.touches[0].clientX
