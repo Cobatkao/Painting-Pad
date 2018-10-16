@@ -26,53 +26,33 @@ pen.addEventListener('click', () => {
   eraser.classList.remove('active')
 })
 
-var li = document.querySelectorAll('#colors > li')
-
 // 控制颜色的效果
+var li = document.querySelectorAll('#colors > li')
 red.addEventListener('click', () => {
-  ctx.strokeStyle='red'
-  var arrayLi = Array.from(li)
-  arrayLi.forEach((item) => {
-    if(item.id == 'red') {
-      item.classList.add('active')
-    } else {
-      item.classList.remove('active')
-    }
-  })
+  colorSwitch('red')
 })
 green.addEventListener('click', () => {
-  ctx.strokeStyle='green';
-  var arrayLi = Array.from(li)
-  arrayLi.forEach((item) => {
-    if(item.id == 'green') {
-      item.classList.add('active')
-    } else {
-      item.classList.remove('active')
-    }
-  })
+  colorSwitch('green')
 })
 blue.addEventListener('click', () => {
-  ctx.strokeStyle='blue';
-  var arrayLi = Array.from(li)
-  arrayLi.forEach((item) => {
-    if(item.id == 'blue') {
-      item.classList.add('active')
-    } else {
-      item.classList.remove('active')
-    }
-  })
+  colorSwitch('blue')
 })
 black.addEventListener('click', () => {
-  ctx.strokeStyle='black';
+  colorSwitch('black')
+})
+
+// 调色效果切换
+function colorSwitch(color) {
+  ctx.strokeStyle = color;
   var arrayLi = Array.from(li)
   arrayLi.forEach((item) => {
-    if(item.id == 'black') {
+    if(item.id == color) {
       item.classList.add('active')
     } else {
       item.classList.remove('active')
     }
   })
-})
+}
 
 // 清空canvas功能
 empty.addEventListener('click', () => {
