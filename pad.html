@@ -6,17 +6,23 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Painting-Pad</title>
   <link rel="stylesheet" href="./style.css">
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
 </head>
 <body>
-  <canvas id="pad" width="500" height="500"></canvas>
+  <canvas id="pad"></canvas>
   <div class="wrap">
-
     <div id="actions" class="actions">
-      <svg class="icon" id="eraser">
+      <svg class="icon eraser" id="eraser">
         <use xlink:href="#icon-xiangpica"></use>
       </svg>
-      <svg class="icon" id="pen">
+      <svg class="icon pencil" id="pencil">
         <use xlink:href="#icon-pencil"></use>
+      </svg>
+      <svg class="icon pen" id="pen">
+        <use xlink:href="#icon-gangbi"></use>
+      </svg>
+      <svg class="icon brush" id="brush">
+        <use xlink:href="#icon-maobi"></use>
       </svg>
     </div>
 
@@ -25,6 +31,9 @@
       <li id="green" class="green"></li>
       <li id="blue" class="blue"></li>
       <li id="black" class="black active"></li>
+      <li>
+          <input type="color" id="palette">
+      </li>
     </ol>
 
     <div id="empty">
@@ -33,21 +42,13 @@
       </svg>
     </div>
 
-    <ol class="lines">
-      <li id="lv1" class="lv1"></li>
-      <li id="lv2" class="lv2"></li>
-      <li id="lv3" class="lv3"></li>
-    </ol>
-
     <div class="save">
         <svg class="icon" id="save">
             <use xlink:href="#icon-baocun"></use>
         </svg>
     </div>
-
   </div>
-  
-  <script src="//at.alicdn.com/t/font_874981_fzncy3tg2fo.js"></script>
+  <script src="//at.alicdn.com/t/font_874981_tbs43nc8qw.js"></script>
   <script src="./main.js"></script>
 </body>
 </html>
