@@ -10,6 +10,10 @@ html, body {
   top: 5px;
   left: 5px;
 }
+.actions > button {
+  padding: 10px;
+  border-radius: 5px;
+}
 .actions > #brush {
   display: none;
 }
