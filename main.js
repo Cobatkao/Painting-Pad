@@ -1,47 +1,29 @@
 var pad = document.getElementById('pad')
 var ctx = pad.getContext('2d')
 var actions = document.getElementById('actions')
-// 默认线条宽度
-var lineWidth = 3
+var li = document.querySelectorAll('#colors > li')
+var svg = document.querySelectorAll('#actions > svg')
+var lineWidth = 2
 
 autoSetCanvasSize(pad)
 
-// 重置canvas为白色，否则下载图片背景色透明
 resetCanvas()
 
 listenToUser(pad)
 
-// 使用橡皮擦
-var eraserEnable = false
+// 画笔放大效果函数
+function ZoomInTools(i) {
+  var ArraySvg = Array.from(svg)
+  ArraySvg.forEach((item) => {
+    if(item.id == i) {
+      item.classList.add('active')
+    } else {
+      item.classList.remove('active')
+    }
+  })
+}
 
-eraser.addEventListener('click', () => {
-  eraserEnable = true
-  eraser.classList.add('active')
-  pen.classList.remove('active')
-})
-
-pen.addEventListener('click', () => {
-  eraserEnable = false
-  pen.classList.add('active')
-  eraser.classList.remove('active')
-})
-
-// 控制颜色的效果
-var li = document.querySelectorAll('#colors > li')
-red.addEventListener('click', () => {
-  colorSwitch('red')
-})
-green.addEventListener('click', () => {
-  colorSwitch('green')
-})
-blue.addEventListener('click', () => {
-  colorSwitch('blue')
-})
-black.addEventListener('click', () => {
-  colorSwitch('black')
-})
-
-// 调色效果切换
+// 调色效果切换函数
 function colorSwitch(color) {
   ctx.strokeStyle = color;
   var arrayLi = Array.from(li)
@@ -58,29 +40,6 @@ function colorSwitch(color) {
 empty.addEventListener('click', () => {
   resetCanvas()
 })
-
-// 控制线条粗细
-lv1.addEventListener('click', () => {
-  lineWidth = 3
-})
-lv2.addEventListener('click', () => {
-  lineWidth = 6
-})
-lv3.addEventListener('click', () => {
-  lineWidth = 10
-})
-
-// 保存功能
-save.addEventListener('click', () => {
-  var url = pad.toDataURL("image/png")
-  var tagA = document.createElement('a')
-  tagA.href = url
-  document.body.appendChild(tagA)
-  tagA.download = '我的画板'
-  tagA.target = '_blank'
-  tagA.click()
-})
-
 
 function listenToUser(canvas) {
   // 模式切换
@@ -106,7 +65,6 @@ function listenToUser(canvas) {
         lastPoint = {x: clientX, y: clientY}
       }
     }
-
     canvas.ontouchmove = (e) => {
       // 判断绘画模式已开启
         var clientX = e.touches[0].clientX
@@ -121,7 +79,6 @@ function listenToUser(canvas) {
           lastPoint = newPoint
         }
     }
-
     canvas.ontouchend = (e) => {
       usingOrNot = false
     }
@@ -130,8 +87,8 @@ function listenToUser(canvas) {
     canvas.onmousedown = (e) => {
       // 绘画模式激活
       usingOrNot = true
-      var clientX = e.clientX
-      var clientY = e.clientY
+      var clientX = e.clientX + 3
+      var clientY = e.clientY + 27
   
       if(eraserEnable) {
         ctx.clearRect(clientX - 5, clientY - 5, 10, 10)
@@ -139,11 +96,10 @@ function listenToUser(canvas) {
         lastPoint = {x: clientX, y: clientY}
       }
     }
-
     canvas.onmousemove = (e) => {
       // 判断绘画模式已开启
-        var clientX = e.clientX
-        var clientY = e.clientY
+        var clientX = e.clientX + 3
+        var clientY = e.clientY + 27
         if(!usingOrNot) {return}
         if(eraserEnable) {
             ctx.clearRect(clientX - 5, clientY - 5, 10, 10)
@@ -153,7 +109,6 @@ function listenToUser(canvas) {
           lastPoint = newPoint
         }
       }
-    
     canvas.onmouseup = (e) => {
       usingOrNot = false
     }
@@ -172,7 +127,7 @@ function autoSetCanvasSize(canvas) {
     var pageWidth = document.documentElement.clientWidth
     canvas.height = pageHeight
     // 扣除工具栏宽度
-    canvas.width = (pageWidth - 39)
+    canvas.width = (pageWidth - 49)
   }
 }
 
@@ -194,3 +149,58 @@ function resetCanvas() {
   ctx.fillRect(0, 0, pad.width, pad.height);
   ctx.closePath();  
 }
+
+/* 功能按钮事件监听 */
+var eraserEnable = false
+
+pencil.addEventListener('click', () => {
+  ZoomInTools('pencil')
+})
+pen.addEventListener('click', () => {
+  ZoomInTools('pen')
+})
+brush.addEventListener('click', () => {
+  ZoomInTools('brush')
+})
+eraser.addEventListener('click', () => {
+  eraserEnable = true
+  ZoomInTools('eraser')
+})
+
+pencil.addEventListener('click', () => {
+  lineWidth = 2
+  console.log('pencil')
+})
+pen.addEventListener('click', () => {
+  lineWidth = 4
+  console.log('pen')
+})
+brush.addEventListener('click', () => {
+  lineWidth = 6
+  console.log('brush')
+})
+
+// 控制颜色的效果
+red.addEventListener('click', () => {
+  colorSwitch('red')
+})
+green.addEventListener('click', () => {
+  colorSwitch('green')
+})
+blue.addEventListener('click', () => {
+  colorSwitch('blue')
+})
+black.addEventListener('click', () => {
+  colorSwitch('black')
+})
+
+// 保存功能
+save.addEventListener('click', () => {
+  var url = pad.toDataURL("image/png")
+  var tagA = document.createElement('a')
+  tagA.href = url
+  document.body.appendChild(tagA)
+  tagA.download = '我的画板'
+  tagA.target = '_blank'
+  tagA.click()
+})
