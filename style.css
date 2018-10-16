@@ -6,7 +6,7 @@ ul, ol {
   list-style: none;
 }
 #pad {
-  background: #fff;
+  background: rgb(238,238,238);
 }
 body {
   display: flex;
