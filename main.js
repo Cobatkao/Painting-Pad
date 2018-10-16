@@ -57,17 +57,17 @@ blue.addEventListener('click', () => {
     }
   })
 })
-// black.addEventListener('click', () => {
-//   ctx.strokeStyle='black';
-//   var arrayLi = Array.from(li)
-//   arrayLi.forEach((item) => {
-//     if(item.id == 'black') {
-//       item.classList.add('active')
-//     } else {
-//       item.classList.remove('active')
-//     }
-//   })
-// })
+black.addEventListener('click', () => {
+  ctx.strokeStyle='black';
+  var arrayLi = Array.from(li)
+  arrayLi.forEach((item) => {
+    if(item.id == 'black') {
+      item.classList.add('active')
+    } else {
+      item.classList.remove('active')
+    }
+  })
+})
 
 // 清空功能
 // empty.addEventListener('click', () => {
