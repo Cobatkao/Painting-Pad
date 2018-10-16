@@ -3,6 +3,7 @@ var ctx = pad.getContext('2d')
 var actions = document.getElementById('actions')
 var li = document.querySelectorAll('#colors > li')
 var svg = document.querySelectorAll('#actions > svg')
+var palette = document.getElementById('palette')
 var lineWidth = 2
 
 autoSetCanvasSize(pad)
@@ -25,7 +26,7 @@ function ZoomInTools(i) {
 
 // 调色效果切换函数
 function colorSwitch(color) {
-  ctx.strokeStyle = color;
+  ctx.strokeStyle = drow() || color
   var arrayLi = Array.from(li)
   arrayLi.forEach((item) => {
     if(item.id == color) {
@@ -87,8 +88,8 @@ function listenToUser(canvas) {
     canvas.onmousedown = (e) => {
       // 绘画模式激活
       usingOrNot = true
-      var clientX = e.clientX + 3
-      var clientY = e.clientY + 27
+      var clientX = e.clientX
+      var clientY = e.clientY
   
       if(eraserEnable) {
         ctx.clearRect(clientX - 5, clientY - 5, 10, 10)
@@ -98,8 +99,8 @@ function listenToUser(canvas) {
     }
     canvas.onmousemove = (e) => {
       // 判断绘画模式已开启
-        var clientX = e.clientX + 3
-        var clientY = e.clientY + 27
+        var clientX = e.clientX
+        var clientY = e.clientY
         if(!usingOrNot) {return}
         if(eraserEnable) {
             ctx.clearRect(clientX - 5, clientY - 5, 10, 10)
@@ -193,6 +194,15 @@ blue.addEventListener('click', () => {
 black.addEventListener('click', () => {
   colorSwitch('black')
 })
+
+function drow() {
+  palette.onclick = function() {
+    palette.click()
+    console.log(this.value)
+    ctx.strokeStyle = this.value
+    ctx.stroke()
+  }
+}
 
 // 保存功能
 save.addEventListener('click', () => {
