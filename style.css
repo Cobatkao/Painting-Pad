@@ -28,12 +28,6 @@ body {
 .actions > svg.active {
   transform: scale(1.5);
 }
-/* empty */
-#empty svg.reset {
-  padding: 15px 5px 5px 5px;
-  width: 1.5em;
-  height: 1.5em;
-}
 .colors > li {
   width: 1.5em;
   height: 1.5em;
@@ -62,4 +56,10 @@ body {
 .colors > li.active {
   transform: scale(1.5);
   transition: all .3s;
+}
+/* empty */
+#empty svg.reset {
+  padding: 15px 5px 5px 5px;
+  width: 1.5em;
+  height: 1.5em;
 }

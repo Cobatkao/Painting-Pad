@@ -179,6 +179,6 @@ function resetCanvas() {
   // pad.width = pad.width
   cxt.fillStyle = "#000";
   cxt.beginPath();  
-  cxt.fillRect(0, 0, pad.width, pad.height);  
+  cxt.fillRect(0, 0, pad.width, pad.height);
   cxt.closePath();  
 }

@@ -19,6 +19,22 @@
 
 不推荐使用js来写，尽量让一个按钮做一件事情，简化代码，所以控制css的display来做。
 
+## 清空画布
+
+```javascript
+function resetCanvas() {
+  // 方法1: 直接重置canvas画布
+  pad.width = pad.width
+```
+```javascript
+  // 方法2: 用clearRect清空画布前
+  cxt.fillStyle = "#000";
+  cxt.beginPath();  
+  cxt.fillRect(0, 0, pad.width, pad.height);  
+  cxt.closePath();  
+}
+```
+
 ## 移动端上下滑动屏幕会抖动
 
 禁用滚动即可。
