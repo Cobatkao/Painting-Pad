@@ -69,10 +69,22 @@ black.addEventListener('click', () => {
   })
 })
 
-// 清空功能
+// 清空canvas功能
 empty.addEventListener('click', () => {
   resetCanvas()
 })
+
+// 控制线条粗细
+lv1.addEventListener('click', () => {
+  lineWidth = 3
+})
+lv2.addEventListener('click', () => {
+  lineWidth = 6
+})
+lv3.addEventListener('click', () => {
+  lineWidth = 10
+})
+
 
 function listenToUser(canvas) {
   // 模式切换
@@ -170,7 +182,8 @@ function drawLine(x1, y1, x2, y2) {
   ctx.beginPath()
   ctx.moveTo(x1, y1);
   ctx.lineTo(x2, y2)
-  ctx.lineWidth = 3
+  // 宽度取当前宽度
+  ctx.lineWidth = lineWidth
   ctx.stroke();
   ctx.closePath();
 }
