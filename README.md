@@ -15,14 +15,42 @@
 1. 点（圆的半径）和线条宽度（lineWidth）大小相同，或前者小于后者；
 2. 其次，用线条将每两次之间移动造成的不连贯点连起来，再把当前点作为上一个点和下一个点连线，这样画出来的就是一条连贯的直线；
 
+## 画笔与橡皮按钮切换
+
+不推荐使用js来写，尽量让一个按钮做一件事情，简化代码，所以控制css的display来做。
+
 ## 用变量来表示状态
 
 # 知识点
 
-## 鼠标事件
+## 鼠标/触摸事件
 
+PC端
 - `onmousedown`: 鼠标被按下
 - `onmousemove`: 鼠标被移动
 - `onmouseup`: 鼠标被松开时
 
 鼠标点击事件的clientX/Y的距离是相对于视口的位置，而不是canvas的位置。
+
+移动端
+- `touchstart`
+- `touchmove`
+- `touchend`
+
+触摸事件的clientX/Y api在touches中，因为触屏设备多点触控的原因，touches是一个哈希，`e.touches[0].clientX`。
+
+## 特性检测
+
+通过特性检测，来决定事件是touch还是mouse。
+
+如果设备支持touch事件，就用touch，反之，使用mouse。
+- 若设备不支持touch事件，则`canvas.ontouchstart`返回`undefined`，所以使用`undefined`来做判断；
+
+```javascript
+// 特性检测
+if(document.body.ontouchstart !== undefined) {
+  ...触屏设别，执行鼠标事件
+  } else {
+    ...非触屏设备
+  }
+```
