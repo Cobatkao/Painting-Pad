@@ -15,7 +15,10 @@ body {
   overflow: hidden;
 }
 body > .wrap {
-  /* background: pink; */
+  padding-right: 10px;
+}
+#actions > *:hover {
+  cursor: pointer;
 }
 .actions {
   margin-top: 10px;
@@ -31,7 +34,7 @@ body > .wrap {
 .actions > svg.active {
   transform: scale(1.5);
 }
-.colors > li {
+.colors > li:not(:last-child) {
   width: 1.5em;
   height: 1.5em;
   margin: 6px 0;
@@ -57,7 +60,7 @@ body > .wrap {
   background: black;
 }
 .colors > li.active {
-  transform: scale(1.5);
+  transform: scale(1.3);
   transition: all .3s;
 }
 /* empty */
@@ -66,32 +69,14 @@ body > .wrap {
   width: 1.5em;
   height: 1.5em;
 }
-.lines {
+/* save */
+.save svg#save {
+  padding: 3px 5px 0px 0px;
+  fill: #ccc;
   width: 2em;
   height: 2em;
-  margin: 5px auto;
 }
-.lines > .lv1 {
-  height: 0;
-  width: 25px;
-  padding-top: 20px;
-  border-top: 3px solid #000;
-}
-.lines > .lv2 {
-  height: 0;
-  width: 25px;
-  padding-top: 20px;
-  border-top: 6px solid #000;
-}
-.lines > .lv3 {
-  height: 0;
-  width: 25px;
-  padding-top: 20px;
-  border-top: 10px solid #000;
-}
-.save svg#save {
-  padding: 75px 8px 5px 5px;
-  fill: #ccc;
-  width: 1.5em;
-  height: 1.5em;
+#colors #palette {
+  width: 2em;
+  margin: 6px;
 }
