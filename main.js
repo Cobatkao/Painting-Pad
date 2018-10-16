@@ -8,14 +8,71 @@ listenToUser(pad)
 
 // 使用橡皮擦
 var eraserEnable = false
+
 eraser.addEventListener('click', () => {
   eraserEnable = true
-  actions.className = "actions on"
+  eraser.classList.add('active')
+  pen.classList.remove('active')
 })
-brush.addEventListener('click', () => {
+
+pen.addEventListener('click', () => {
   eraserEnable = false
-  actions.className = "actions"
+  pen.classList.add('active')
+  eraser.classList.remove('active')
 })
+
+var li = document.querySelectorAll('#colors > li')
+
+// 控制颜色的效果
+red.addEventListener('click', () => {
+  ctx.strokeStyle='red'
+  var arrayLi = Array.from(li)
+  arrayLi.forEach((item) => {
+    if(item.id == 'red') {
+      item.classList.add('active')
+    } else {
+      item.classList.remove('active')
+    }
+  })
+})
+green.addEventListener('click', () => {
+  ctx.strokeStyle='green';
+  var arrayLi = Array.from(li)
+  arrayLi.forEach((item) => {
+    if(item.id == 'green') {
+      item.classList.add('active')
+    } else {
+      item.classList.remove('active')
+    }
+  })
+})
+blue.addEventListener('click', () => {
+  ctx.strokeStyle='blue';
+  var arrayLi = Array.from(li)
+  arrayLi.forEach((item) => {
+    if(item.id == 'blue') {
+      item.classList.add('active')
+    } else {
+      item.classList.remove('active')
+    }
+  })
+})
+// black.addEventListener('click', () => {
+//   ctx.strokeStyle='black';
+//   var arrayLi = Array.from(li)
+//   arrayLi.forEach((item) => {
+//     if(item.id == 'black') {
+//       item.classList.add('active')
+//     } else {
+//       item.classList.remove('active')
+//     }
+//   })
+// })
+
+// 清空功能
+// empty.addEventListener('click', () => {
+//   resetCanvas()
+// })
 
 function listenToUser(canvas) {
   // 模式切换
@@ -43,8 +100,7 @@ function listenToUser(canvas) {
       // 判断绘画模式已开启
         var clientX = e.touches[0].clientX
         var clientY = e.touches[0].clientY
-        console.log(clientX);
-      console.log(clientY);
+
         if(!usingOrNot) {return}
         if(eraserEnable) {
             ctx.clearRect(clientX - 5, clientY - 5, 10, 10)
@@ -53,7 +109,7 @@ function listenToUser(canvas) {
           drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
           lastPoint = newPoint
         }
-      }
+    }
 
     canvas.ontouchend = (e) => {
       usingOrNot = false
@@ -63,7 +119,7 @@ function listenToUser(canvas) {
     canvas.onmousedown = (e) => {
       // 绘画模式激活
       usingOrNot = true
-      var clientX = e.clientX  
+      var clientX = e.clientX
       var clientY = e.clientY
   
       if(eraserEnable) {
@@ -104,7 +160,8 @@ function assignSize() {
   var pageHeight = document.documentElement.clientHeight
   var pageWidth = document.documentElement.clientWidth
   canvas.height = pageHeight
-  canvas.width = pageWidth
+  // 扣除工具栏宽度
+  canvas.width = (pageWidth - 39)
   }
 }
 
@@ -113,7 +170,14 @@ function drawLine(x1, y1, x2, y2) {
   ctx.beginPath()
   ctx.moveTo(x1, y1);
   ctx.lineTo(x2, y2)
-  ctx.lineWidth = 5
+  ctx.lineWidth = 3
   ctx.stroke();
   ctx.closePath();
+}
+
+function resetCanvas() {
+  cxt.fillStyle="#000000";
+  cxt.beginPath();  
+  cxt.fillRect(0, 0, c.width, c.height);  
+  cxt.closePath();  
 }

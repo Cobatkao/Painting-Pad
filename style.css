@@ -1,29 +1,65 @@
-html, body {
+* {
   padding: 0;
   margin: 0;
 }
+ul, ol {
+  list-style: none;
+}
 #pad {
-  background: #ddd;
+  background: #fff;
+}
+body {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  overflow: hidden;
 }
 .actions {
-  position: fixed;
-  top: 5px;
-  left: 5px;
+  margin-top: 10px;
+  margin-right: 5px;
 }
-.actions > button {
-  padding: 10px;
-  border-radius: 5px;
+.actions > svg {
+  padding: 5px;
+  width: 1.5em;
+  height: 1.5em;
+  transition: all .3s;
 }
-.actions > #brush {
-  display: none;
+/*加选择效果*/
+.actions > svg.active {
+  transform: scale(1.5);
 }
-.actions > #eraser {
-  display: inline-block;
+/* empty */
+#empty svg.reset {
+  padding: 15px 5px 5px 5px;
+  width: 1.5em;
+  height: 1.5em;
 }
-/*使用橡皮*/
-.actions.on > #eraser {
-  display: none;
+.colors > li {
+  width: 1.5em;
+  height: 1.5em;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 50%;
 }
-.actions.on > #brush {
-  display: inline-block;
+.colors {
+  margin-right: 5px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.colors > li.red {
+  background: red;
+}
+.colors > li.green {
+  background: green;
+}
+.colors > li.blue {
+  background: blue;
+}
+.colors > li.black {
+  background: black;
+}
+.colors > li.active {
+  transform: scale(1.5);
+  transition: all .3s;
 }
