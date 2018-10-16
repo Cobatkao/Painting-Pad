@@ -70,9 +70,9 @@ black.addEventListener('click', () => {
 })
 
 // 清空功能
-// empty.addEventListener('click', () => {
-//   resetCanvas()
-// })
+empty.addEventListener('click', () => {
+  resetCanvas()
+})
 
 function listenToUser(canvas) {
   // 模式切换
@@ -177,8 +177,8 @@ function drawLine(x1, y1, x2, y2) {
 
 function resetCanvas() {
   // pad.width = pad.width
-  cxt.fillStyle = "#000";
-  cxt.beginPath();  
-  cxt.fillRect(0, 0, pad.width, pad.height);
-  cxt.closePath();  
+  ctx.fillStyle = "#fff";
+  ctx.beginPath();  
+  ctx.fillRect(0, 0, pad.width, pad.height);
+  ctx.closePath();  
 }
