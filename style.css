@@ -15,7 +15,7 @@ body {
   overflow: hidden;
 }
 body > .wrap {
-  padding-right: 10px;
+  margin-right: 4px;
 }
 #actions > *:hover {
   cursor: pointer;
