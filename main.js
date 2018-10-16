@@ -156,12 +156,12 @@ function autoSetCanvasSize(canvas) {
     assignSize()
   }
 
-function assignSize() {
-  var pageHeight = document.documentElement.clientHeight
-  var pageWidth = document.documentElement.clientWidth
-  canvas.height = pageHeight
-  // 扣除工具栏宽度
-  canvas.width = (pageWidth - 39)
+  function assignSize() {
+    var pageHeight = document.documentElement.clientHeight
+    var pageWidth = document.documentElement.clientWidth
+    canvas.height = pageHeight
+    // 扣除工具栏宽度
+    canvas.width = (pageWidth - 39)
   }
 }
 
@@ -176,8 +176,9 @@ function drawLine(x1, y1, x2, y2) {
 }
 
 function resetCanvas() {
-  cxt.fillStyle="#000000";
+  // pad.width = pad.width
+  cxt.fillStyle = "#000";
   cxt.beginPath();  
-  cxt.fillRect(0, 0, c.width, c.height);  
+  cxt.fillRect(0, 0, pad.width, pad.height);  
   cxt.closePath();  
 }
