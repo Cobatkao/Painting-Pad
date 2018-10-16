@@ -41,6 +41,9 @@ function resetCanvas() {
 
 ## 用变量来表示状态
 
+1. 记录线条粗细
+2. 记录按钮状态，控制逻辑
+
 ## 函数封装
 
 这个项目中自己封装了两个函数`resetCanvas()`，`xxx()`
@@ -78,3 +81,7 @@ if(document.body.ontouchstart !== undefined) {
     ...非触屏设备
   }
 ```
+
+## canvas保存图片
+
+调用api：`toDataURL("image/png")`

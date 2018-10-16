@@ -1,6 +1,7 @@
 var pad = document.getElementById('pad')
 var ctx = pad.getContext('2d')
 var actions = document.getElementById('actions')
+var lineWidth = 3
 
 autoSetCanvasSize(pad)
 
@@ -83,6 +84,16 @@ lv2.addEventListener('click', () => {
 })
 lv3.addEventListener('click', () => {
   lineWidth = 10
+})
+
+// 保存功能
+save.addEventListener('click', () => {
+  var url = pad.toDataURL("image/png")
+  var tagA = document.createElement('a')
+  tagA.href = url
+  document.body.appendChild(tagA)
+  tagA.download = 'your_sample'
+  tagA.click()
 })
 
 

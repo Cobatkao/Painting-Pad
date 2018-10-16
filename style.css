@@ -86,3 +86,9 @@ body {
   padding-top: 20px;
   border-top: 10px solid #000;
 }
+.save svg#save {
+  padding: 75px 8px 5px 5px;
+  fill: #ccc;
+  width: 1.5em;
+  height: 1.5em;
+}
