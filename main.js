@@ -1,9 +1,13 @@
 var pad = document.getElementById('pad')
 var ctx = pad.getContext('2d')
 var actions = document.getElementById('actions')
+// 默认线条宽度
 var lineWidth = 3
 
 autoSetCanvasSize(pad)
+
+// 重置canvas为白色，否则下载图片背景色透明
+resetCanvas()
 
 listenToUser(pad)
 
@@ -92,7 +96,8 @@ save.addEventListener('click', () => {
   var tagA = document.createElement('a')
   tagA.href = url
   document.body.appendChild(tagA)
-  tagA.download = 'your_sample'
+  tagA.download = '我的画板'
+  tagA.target = '_blank'
   tagA.click()
 })
 
