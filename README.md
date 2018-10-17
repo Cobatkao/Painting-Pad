@@ -212,3 +212,8 @@ save.addEventListener('click', () => {
 1. 确保手机和电脑在同个wifi环境下
 2. 查看电脑ipv4地址
 3. 在手机浏览器中打开ipv4
+
+# todo
+
+- 代码优化
+- 增加撤回功能
