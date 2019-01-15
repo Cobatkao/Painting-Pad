@@ -16,7 +16,7 @@
 
 源码链接：https://github.com/Cobatkao/Painting-Pad
 
-预览链接：http://isaacgao.cn/Painting-Pad/pad.html
+预览链接：https://cobatkao.github.io/Painting-Pad/pad.html
 
 # 细节
 
